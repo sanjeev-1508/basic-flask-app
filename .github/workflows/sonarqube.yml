@@ -34,6 +34,7 @@ jobs:
 
       - name: Run SonarQube Scanner
         run: |
+          echo $$SONAR_SCANNER_PATH
           chmod +x $SONAR_SCANNER_PATH/bin/sonar-scanner
           $SONAR_SCANNER_PATH/bin/sonar-scanner
         env:

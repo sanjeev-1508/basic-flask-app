@@ -24,6 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
+      - name: Run Black
+        run: |
+          pip install black
+          black --check .
+          
       - name: Download and extract SonarScanner
         run: |
           sudo apt-get install -y openjdk-11-jre

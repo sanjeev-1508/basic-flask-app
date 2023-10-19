@@ -30,9 +30,9 @@ jobs:
           export SONAR_SCANNER_VERSION=4.6.2.2472
           curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip
           unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip -d $HOME
-          echo "export PATH=$PATH:${PWD}/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin" >> $GITHUB_ENV
+          SONAR_SCANNER_PATH="${PWD}/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin"
 
       - name: Run SonarQube Scanner
-        run: sonar-scanner
+        run: $SONAR_SCANNER_PATH/sonar-scanner
         env:
           SONAR_TOKEN: sqp_c1c638b93f8ea39847655e813ab67f3af1ae4a9c

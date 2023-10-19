@@ -38,5 +38,11 @@ jobs:
           echo $SONAR_SCANNER_PATH
           chmod +x /home/runner/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner
           /home/runner/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner
+          SONAR_EXIT_CODE=$?
+          if [ $SONAR_EXIT_CODE -ne 0 ]; then
+            echo "SonarQube analysis failed with exit code $SONAR_EXIT_CODE"
+            exit $SONAR_EXIT_CODE
+          fi
+
         env:
           SONAR_TOKEN: sqp_c1c638b93f8ea39847655e813ab67f3af1ae4a9c

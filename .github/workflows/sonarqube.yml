@@ -33,6 +33,8 @@ jobs:
           SONAR_SCANNER_PATH="${PWD}/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin"
 
       - name: Run SonarQube Scanner
-        run: $SONAR_SCANNER_PATH/sonar-scanner
+        run: |
+          chmod +x $SONAR_SCANNER_PATH/bin/sonar-scanner
+          $SONAR_SCANNER_PATH/bin/sonar-scanner
         env:
           SONAR_TOKEN: sqp_c1c638b93f8ea39847655e813ab67f3af1ae4a9c
